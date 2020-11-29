@@ -1,6 +1,7 @@
 import React from 'react';
 import LinksList from '../../LinksList';
-import { useMutation, useQuery } from "react-query";
+import { useMutation, useQuery } from 'react-query';
+import { sortBy } from 'lodash';
 
 export interface Link {
   name: string;
@@ -19,8 +20,11 @@ const AddedLinks: React.FC = () => {
   const { data } = useQuery('linksList', () =>
     fetch(
       "http://localhost:8080/service"
-    ).then((res) => res.json())
-  );
+    ).then((res) => res.json()),
+  {
+    // Refetch the data every second
+    refetchInterval: 1000,
+  });
 
 
   const [deleteLinkMutation] = useMutation(({ text }: any) => {
@@ -49,7 +53,14 @@ const AddedLinks: React.FC = () => {
     });
   });
 
-  return <LinksList links={list} />;
+  const sortedList = sortBy(list, 'id');
+
+  return (
+    <>
+      {!!sortedList.length && <h2>Your added links</h2>}
+      <LinksList links={sortedList} />
+    </>
+  );
 };
 
 export default AddedLinks;

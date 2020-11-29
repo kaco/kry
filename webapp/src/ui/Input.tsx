@@ -10,26 +10,30 @@ const StyledInput = styled.input`
   height: 4.4rem;
 `;
 
+const ErrorMessage = styled.p`
+  font-size: 1.75rem;
+  color: red;
+  margin-top: 1rem;
+`;
+
 type InputProps = {
   name: string;
   value: string;
   placeholder: string;
-  maxLength: number;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   errorMessage?: string;
 };
 
-export const Input: React.FC<InputProps> = ({ name, value, placeholder, maxLength, onChange, errorMessage }) => {
+export const Input: React.FC<InputProps> = ({ name, value, placeholder, onChange, errorMessage }) => {
   return (
     <>
       <StyledInput
         name={name}
         value={value}
         placeholder={placeholder}
-        maxLength={maxLength}
         onChange={onChange}
       />
-      {errorMessage && <p>{errorMessage}</p>}
+      {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
     </>
   );
 };

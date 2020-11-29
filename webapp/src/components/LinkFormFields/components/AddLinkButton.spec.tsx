@@ -3,7 +3,7 @@ import { render, fireEvent } from '@testing-library/react';
 import { AddLinkButton } from './AddLinkButton';
 
 describe('<AddLinkButton /> spec', () => {
-  it.skip('renders the button', () => {
+  it('renders the button', () => {
     const addLinkCallback = jest.fn();
     const { container } = render(<AddLinkButton onClick={addLinkCallback} />);
     expect((container?.firstChild as Element)?.querySelector('button'));

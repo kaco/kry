@@ -69,7 +69,7 @@ type Link = {
   name: string;
   url: string;
   onError: () => void;
-  status: string;
+  status: "OK" | "UNKNOWN" | "FAIL";
 };
 
 export type LinksListProps = {

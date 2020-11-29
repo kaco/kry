@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { AddLinkButton } from './components/AddLinkButton';
 import { Input } from '../../ui/Input';
@@ -35,6 +35,7 @@ export type LinkFormProps = {
   urlValue: string;
   onFieldChange: (name: string, value: string) => void;
   onEnter: (text: string, url: string) => void;
+  errorMessage: string;
 };
 
 const LinkForm: React.FC<LinkFormProps> = ({
@@ -42,6 +43,7 @@ const LinkForm: React.FC<LinkFormProps> = ({
   urlValue,
   onFieldChange,
   onEnter,
+  errorMessage,
 }) => {
   const getTrimmedInput = () => {
     const name = nameValue.replace(/\s+/g, ' ').trim();
@@ -67,8 +69,8 @@ const LinkForm: React.FC<LinkFormProps> = ({
           name="url"
           value={urlValue}
           placeholder="URL"
-          maxLength={248}
           onChange={onInputChange}
+          errorMessage={errorMessage}
         />
       </InputContainer>
       <InputContainer>
@@ -76,7 +78,6 @@ const LinkForm: React.FC<LinkFormProps> = ({
           name="name"
           value={nameValue}
           placeholder={'name'}
-          maxLength={255}
           onChange={onInputChange}
         />
       </InputContainer>

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { ReactComponent as SuccessIcon } from '../../../svg/circle-check.svg';
 import { ReactComponent as FailureIcon } from '../../../svg/circle-cross.svg';
+import { ReactComponent as PendingIcon } from '../../../svg/circle-question.svg';
 
 const IconContainer = styled.div<{status: string}>`
   flex-direction: column;
@@ -12,7 +13,7 @@ const IconContainer = styled.div<{status: string}>`
   margin-top: 3rem;
   
   svg path {
-    stroke: ${props => (props.status === 'OK' ? 'green' : 'red')};
+    stroke: ${props => (props.status === 'OK' ? 'green' : props.status === 'UNKNOWN' ? 'grey' :'red')};
   }
   @media (min-width: 480px) {
     max-width: 10rem;
@@ -23,12 +24,14 @@ const IconContainer = styled.div<{status: string}>`
 `;
 
 type RemoveLinkButtonProps = {
-  status: string;
+  status: "OK" | "UNKNOWN" | "FAIL";
 };
 
 const StatusIcon: React.FC<RemoveLinkButtonProps> = ({ status }) => (
   <IconContainer status={status}>
-    {status === 'OK' ? <SuccessIcon/> : <FailureIcon/>}
+    {status === 'OK' && <SuccessIcon/>}
+    {status === 'UNKNOWN' && <PendingIcon/>}
+    {status === 'FAIL' && <FailureIcon/>}
   </IconContainer>
 );
 
