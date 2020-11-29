@@ -1,0 +1,33 @@
+html {
+  font-size: 50%;
+}
+
+body {
+  background: #eefaf7;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+h2 {
+  font-size: 3.2rem;
+  line-height: 1.4;
+  color: #002845;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 3rem;
+  font-family: YouSans,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 2rem;
+  line-height: 1.4;
+  color: #002845;
+}
